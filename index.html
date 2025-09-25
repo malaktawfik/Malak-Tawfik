@@ -640,12 +640,13 @@
 
   <!-- Navbar -->
   <header id="navbar">
-    <img src="F:\New folder\DEPI\Portfolio\Assets\logo2.png" alt="Logo" class="logo">
+    <img src="Assets\logo2.png" alt="Logo" class="logo">
     <nav>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Why Malak</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -978,7 +979,7 @@ messageForm.addEventListener('submit', async (e) => {
     }
 
     // Simulate sending to your Gmail
-const response = await fetch('https://portfolio-backend-dt9o5wijk-malaks-projects-94eec807.vercel.app/api/send-email', {
+const response = await fetch('https://portfolio-backend-3qrdc4dqn-malaks-projects-94eec807.vercel.app/api/send-email', {
   method: 'POST',
   body: formData,
 });
@@ -997,8 +998,6 @@ if (response.ok) {
   alert(`An error occurred: ${error.message}`);
 }
 });
-
-
   </script>
 </body>
 </html>
