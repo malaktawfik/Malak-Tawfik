@@ -4,7 +4,7 @@ const app = express();
 
 // Replace with your frontend URL (or use '*' to allow all for testing)
 app.use(cors({
-  origin: 'https://malaktawfik.github.io/portfolio-frontend/', // e.g., https://malak-portfolio.vercel.app
+  origin: 'https://malaktawfik.github.io/Malak-Tawfik/',
   methods: ['GET', 'POST'], // allowed methods
   credentials: true
 }));
