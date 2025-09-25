@@ -1,66 +1,31 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
-const multer = require('multer');
 const cors = require('cors');
-
 const app = express();
-app.use(cors());
+
+// Replace with your frontend URL (or use '*' to allow all for testing)
+app.use(cors({
+  origin: 'https://malaktawfik.github.io/portfolio-frontend/', // e.g., https://malak-portfolio.vercel.app
+  methods: ['GET', 'POST'], // allowed methods
+  credentials: true
+}));
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// ✅ Use memory storage (no writing to disk, works on Vercel)
-const storage = multer.memoryStorage();
-const upload = multer({
-  storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB per file
-  fileFilter: (req, file, cb) => cb(null, true)
-});
-
-// ✅ Gmail transporter (use App Password, not your real password!)
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'malaktawfikbusiness.fl@gmail.com',
-    pass: process.env.GMAIL_APP_PASSWORD
-  }
-});
-
-// ✅ API endpoint for contact form
-app.post('/api/send-email', upload.array('attachments', 5), async (req, res) => {
+// Your send-email route
+app.post('/api/send-email', async (req, res) => {
   try {
     const { email, message } = req.body;
+    console.log('Email:', email);
+    console.log('Message:', message);
 
-    if (!email || !message) {
-      return res.status(400).json({ error: 'Email and message are required.' });
-    }
-
-    const mailOptions = {
-      from: 'malaktawfikbusiness.fl@gmail.com',
-      to: 'malaktawfikbusiness.fl@gmail.com',
-      subject: `New Message from Portfolio: ${email}`,
-      text: `
-        From: ${email}
-        Message: ${message}
-        
-        ${req.files && req.files.length > 0
-          ? `Attachments: ${req.files.map(f => f.originalname).join(', ')}`
-          : 'No attachments'}
-      `,
-      attachments: req.files
-        ? req.files.map(file => ({
-            filename: file.originalname,
-            content: file.buffer // ✅ stored in memory
-          }))
-        : []
-    };
-
-    await transporter.sendMail(mailOptions);
-
-    res.json({ success: true, message: 'Email sent successfully!' });
-  } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ error: 'Failed to send email.' });
+    // Your email sending logic here
+    res.status(200).send('Message sent successfully!');
+  } catch (err) {
+    res.status(500).send('Error sending message');
   }
 });
 
-// ✅ Export app for Vercel
-module.exports = app;
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
