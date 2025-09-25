@@ -13,695 +13,639 @@
       background: #000;
       color: #fff;
       overflow-x: hidden;
-      line-height: 1.5;
     }
+/* Soft Skills Tags */
+/* Soft Skills Tags */
+.soft-skills {
+  display: flex;
+  flex-direction: column;   /* stack rows vertically */
+  align-items: center;
+  gap: 30px;                /* gap BETWEEN rows */
+  margin-top: 20px;
+}
 
-    /* Navbar */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 100;
-    }
+.soft-skills-row {
+  display: flex;
+  gap: 20px;                /* gap BETWEEN items in a row */
+  justify-content: center;
+}
 
-    header img.logo {
-      height: 30px;
-    }
+.soft-skill {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 14px 26px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.3s ease;
+}
 
-    nav {
-      display: none;
-      gap: 20px;
-    }
+.soft-skill:hover {
+  transform: translateY(-3px);
+}
 
-    nav.show {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      padding: 20px;
-    }
 
-    nav a {
-      text-decoration: none;
-      color: #ccc;
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 10px;
-      text-align: center;
-      position: relative;
-    }
+.soft-skills span {
+  padding: 22px 29px;
+  border-radius: 45px;
+  background: #111;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2),
+              0 0 10px rgba(255,255,255,0.2),
+              0 0 10px rgba(255,255,255,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    nav a:hover,
-    nav a.active {
-      color: #fff;
-    }
+.soft-skills span:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(255,255,255,0.8),
+              0 0 30px rgba(255,255,255,0.6);
+}
 
-    nav a.active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 2px;
-      background: #fff;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 1.5rem;
-      color: #fff;
-      cursor: pointer;
-    }
 
     /* Hero Section */
     .hero {
       height: 100vh;
+      background: url("Assets/bg.png") no-repeat center center/cover;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
       text-align: center;
-      padding: 20px;
-      background-image: url("Assets/bg.png");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+      padding-bottom: 80px;
+      position: relative;
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-      margin-bottom: 20px;
-      animation: flyIn 1.2s ease-out forwards;
-    }
+.hero p {
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.9),
+               0 0 20px rgba(255,255,255,0.8),
+               0 0 40px rgba(255,255,255,0.6);
+  margin-bottom: 20px;
 
-    @keyframes flyIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+  /* animation */
+  opacity: 0;
+  transform: translateY(30px);  /* start lower */
+  animation: flyIn 1.2s ease-out forwards;
+  animation-delay: 0.5s;        /* wait a bit after load */
+}
+
+@keyframes flyIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
     .hero .btn {
-      padding: 12px 25px;
+      padding: 14px 30px;
       background: #7030A0;
-      border-radius: 25px;
+      border-radius: 30px;
       font-weight: bold;
       text-transform: uppercase;
       text-decoration: none;
       color: #fff;
-      font-size: 1rem;
-      touch-action: manipulation;
+      letter-spacing: 1px;
+      transition: background 0.3s;
     }
+    .hero .btn:hover { background: #4b1f72; }
 
-    .hero .btn:hover {
-      background: #4b1f72;
-    }
-
-    /* Soft Skills */
-    .soft-skills {
+    /* Navbar */
+    header {
+      position: fixed;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      padding: 15px 40px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .soft-skills-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
       justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      background: rgba(0,0,0,0.5);
+      transition: top 0.5s ease;
+      z-index: 100;
+    }
+    header.show { top: 0; }
+    header img.logo {
+      position: absolute;
+      left: 20px;
+      top: 10px;
+      height: 40px;
+    }
+    nav { display: flex; gap: 40px; }
+    nav a {
+      text-decoration: none; color: #ccc; font-size: 14px; font-weight: 600;
+      position: relative; padding-bottom: 5px; transition: color 0.3s;
+    }
+    nav a:hover { color: #fff; }
+    nav a.active { color: #fff; }
+    nav a.active::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 100%; height: 2px; background: #fff;
     }
 
-    .soft-skill {
-      background: #f5f5f5;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #333;
-    }
-
-    /* Remove hover effects for touch devices */
-    @media (hover: none) {
-      .soft-skill:hover,
-      .skill-box:hover,
-      .hero .btn:hover,
-      .arrow:hover {
-        transform: none;
-        box-shadow: none;
-        background: inherit;
-      }
-    }
-
-    /* About Section */
+    /* About storytelling */
     #about {
       position: relative;
       background: #000;
-      padding: 80px 20px;
+      height: 300vh;
     }
 
     .story-block {
-      position: relative;
-      top: auto;
+      position: sticky;
+      top: 30%;
       opacity: 0;
       transform: translateY(40px) scale(0.95);
       transition: opacity 0.6s ease, transform 0.6s ease;
       max-width: 700px;
-      margin: 0 auto 60px;
+      margin: 0 auto;
       text-align: center;
     }
-
     .story-block.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
-
     .story-block h1 {
       font-size: 2.5rem;
       font-weight: 900;
       margin-bottom: 20px;
     }
-
     .story-block p {
-      font-size: 1.1rem;
+      font-size: 18px;
       line-height: 1.6;
       color: #ddd;
     }
 
     /* Skills Section */
     #skills {
+      position: relative;
       background: #181818;
-      padding: 80px 20px;
+      height: 300vh; /* tall for scroll effect */
+      padding: 150px 40px 80px;
     }
 
     .skills-header {
-      position: static;
+      position: sticky;
+      top: 15%;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
     }
 
+    .skills-block {
+      position: sticky;
+      top: 50%;
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .skills-block.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .skills-header h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .skills-header p {
+      font-size: 18px;
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Skill boxes row */
     .skills-boxes {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
     }
 
     .skill-box {
       flex: 1;
-      min-width: 120px;
-      max-width: 150px;
-      min-height: 180px;
-      padding: 15px;
-      border-radius: 10px;
+      min-width: 150px;
+      max-width: 180px;
+      min-height: 220px;
+      padding: 20px;
+      border-radius: 15px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
       font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
       text-align: center;
     }
 
     .skill-box img {
-      max-width: 60px;
+      max-width: 80px;
       height: auto;
       margin-top: 10px;
     }
 
     .skill-box span {
-      font-size: 0.9rem;
+      margin-bottom: 10px;
+      font-size: 16px;
     }
 
-    /* Projects Section */
-    #projects {
-      background: #111;
-      padding: 80px 0;
+    .skill-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    /* Other sections */
+    #projects, #contact {
+      padding: 100px 20px;
       text-align: center;
     }
+    #projects { background: #111; }
+    #contact { background: #222; }
+/* Carousel Section Adjustments */
+#projects {
+  background: #111;
+  padding: 80px 0;
+  text-align: center;
+}
+
+/* Carousel Container */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Track Wrapper */
+.carousel-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Image Slide Row */
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+/* Each Slide */
+.project-slide {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+/* Image Card */
+.project-slide img {
+  width: 70%;               /* smaller than full width */
+  max-width: 900px;         /* keeps it neat */
+  height: auto;
+  border-radius: 30px;      /* rounded corners */
+  background: #000;         /* black background around image */
+  padding: 20px;            /* gap between image & card edges */
+  display: block;
+  margin: 0 auto;
+}
+
+/* Description */
+.project-slide p {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  white-space: pre-line;
+}
+
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 35px;
+  color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.left-arrow {
+  left: 20px;
+}
+
+.right-arrow {
+  right: 20px;
+}
+
+.arrow.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Dots */
+.carousel-dots {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.carousel-dots .dot {
+  width: 12px;
+  height: 12px;
+  background-color: #444;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.carousel-dots .dot.active {
+  background-color: white;
+  width: 35px;
+  border-radius: 8px;
+}
+
+.project-slide p {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 16px 24px;
+  margin-top: -4px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 0 0 8px 8px;
+}
+
+.project-card {
+  background: #000;
+  border-radius: 40px;
+  padding: 40px 20px;
+  width: 75%;
+  max-width: 950px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+
+/* Why Malak Section */
+#why-malak {
+  background: #000;
+  padding: 100px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.why-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.why-block.reverse {
+  flex-direction: row-reverse;
+}
+
+.why-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.why-text h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #bb00ff; /* Purple heading */
+  margin-bottom: 20px;
+}
+
+.why-text p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.why-image {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.why-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+}
+
+/* Contact Section */
+/* Contact Section */
+#contact {
+  background: #000;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.contact-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #ff00cc, #cc00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 0, 204, 0.7), 0 0 20px rgba(204, 0, 255, 0.5);
+  margin-bottom: 20px;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px rgba(255, 0, 204, 0.7), 0 0 10px rgba(204, 0, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 0, 204, 0.9), 0 0 30px rgba(204, 0, 255, 0.7);
+  }
+}
+
+.contact-subtitle {
+  font-size: 1.2rem;
+  color: #fff;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.contact-details {
+  margin-bottom: 20px;
+}
+
+.contact-details p {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 10px 0;
+}
+
+.contact-details .icon {
+  margin-right: 10px;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: #888;
+  border-top: 1px dashed #444;
+  padding-top: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Message Button and Box */
+.message-btn {
+  padding: 12px 25px;
+  background: #7030A0;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 20px;
+}
+
+.message-btn:hover {
+  background: #4b1f72;
+}
+
+.message-box {
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  text-align: left;
+  backdrop-filter: blur(5px);
+}
+
+.message-box.active {
+  display: block;
+}
+
+#messageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#messageForm input[type="email"],
+#messageForm textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #222;
+  color: #fff;
+}
+
+#messageForm textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+#messageForm input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #222;
+  color: #fff;
+}
+
+#messageForm button[type="submit"],
+#messageForm .close-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#messageForm button[type="submit"] {
+  background: #7030A0;
+  color: #fff;
+}
+
+#messageForm button[type="submit"]:hover {
+  background: #4b1f72;
+}
+
+#messageForm .close-btn {
+  background: #444;
+  color: #fff;
+}
+
+#messageForm .close-btn:hover {
+  background: #666;
+}
+
+.confirmation {
+  display: none;
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.confirmation.active {
+  display: block;
+}
 
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-    }
-
-    .carousel-track-wrapper {
-      overflow: hidden;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.6s ease;
-    }
-
-    .project-slide {
-      min-width: 100%;
-      padding: 20px;
-    }
-
-    .project-card {
-      background: #000;
-      border-radius: 20px;
-      padding: 20px;
-      width: 90%;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .project-slide img {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-      border-radius: 15px;
-      background: #000;
-      padding: 10px;
-      loading: lazy;
-    }
-
-    .project-slide p {
-      font-size: 0.9rem;
-      padding: 10px 15px;
-      border-radius: 0 0 8px 8px;
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      padding: 15px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      color: #fff;
-      cursor: pointer;
-      z-index: 10;
-    }
-
-    .left-arrow {
-      left: 10px;
-    }
-
-    .right-arrow {
-      right: 10px;
-    }
-
-    .arrow.disabled {
-      opacity: 0.3;
-      pointer-events: none;
-    }
-
-    .carousel-dots {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .carousel-dots .dot {
-      width: 10px;
-      height: 10px;
-      background-color: #444;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .carousel-dots .dot.active {
-      width: 25px;
-      border-radius: 6px;
-      background-color: white;
-    }
-
-    /* Why Malak Section */
-    #why-malak {
-      background: #000;
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-    }
-
-    .why-block,
-    .why-block.reverse {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .why-text {
-      flex: 1;
-      min-width: 0;
-      text-align: center;
-    }
-
-    .why-text h2 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #bb00ff;
-      margin-bottom: 15px;
-    }
-
-    .why-text p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #ccc;
-    }
-
-    .why-image {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      justify-content: center;
-    }
-
-    .why-image img {
-      width: 100%;
-      max-width: 100%;
-      border-radius: 8px;
-      loading: lazy;
-    }
-
-    /* Contact Section */
-    #contact {
-      background: #000;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .contact-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .contact-title {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: #fff;
-      text-transform: uppercase;
-      background: linear-gradient(45deg, #ff00cc, #cc00ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .contact-subtitle {
-      font-size: 1rem;
-      color: #fff;
-      max-width: 600px;
-      margin: 0 auto 30px;
-      line-height: 1.6;
-    }
-
-    .contact-details {
-      margin-bottom: 20px;
-    }
-
-    .contact-details p {
-      font-size: 1rem;
-      color: #ccc;
-      margin: 10px 0;
-    }
-
-    .contact-details .icon {
-      margin-right: 10px;
-    }
-
-    .copyright {
-      font-size: 0.9rem;
-      color: #888;
-      border-top: 1px dashed #444;
-      padding-top: 20px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .message-btn {
-      padding: 12px 25px;
-      background: #7030A0;
-      border: none;
-      border-radius: 25px;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #fff;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .message-btn:hover {
-      background: #4b1f72;
-    }
-
-    .message-box {
-      display: none;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 15px;
-      max-width: 90%;
-      margin: 0 auto 20px;
-      text-align: left;
-      backdrop-filter: blur(5px);
-    }
-
-    .message-box.active {
-      display: block;
-    }
-
-    #messageForm {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    #messageForm input[type="email"],
-    #messageForm textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background: #222;
-      color: #fff;
-      font-size: 1rem;
-    }
-
-    #messageForm textarea {
-      width: 100%;
-      resize: vertical;
-    }
-
-    #messageForm input[type="file"] {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background: #222;
-      color: #fff;
-      font-size: 1rem;
-    }
-
-    #messageForm button[type="submit"],
-    #messageForm .close-btn {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    #messageForm button[type="submit"] {
-      background: #7030A0;
-      color: #fff;
-    }
-
-    #messageForm button[type="submit"]:hover {
-      background: #4b1f72;
-    }
-
-    #messageForm .close-btn {
-      background: #444;
-      color: #fff;
-    }
-
-    #messageForm .close-btn:hover {
-      background: #666;
-    }
-
-    .confirmation {
-      display: none;
-      color: #fff;
-      font-size: 1rem;
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    .confirmation.active {
-      display: block;
-    }
-
-    /* Media Queries */
-    @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
-
-      nav {
-        display: none;
-      }
-
-      nav.show {
-        display: flex;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
-
-      .hero .btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-
-      .soft-skills-row {
-        gap: 10px;
-      }
-
-      .soft-skill {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-      }
-
-      .skills-header h1 {
-        font-size: 2rem;
-      }
-
-      .skills-header p {
-        font-size: 1rem;
-      }
-
-      .story-block h1 {
-        font-size: 1.8rem;
-      }
-
-      .story-block p {
-        font-size: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        padding: 8px 15px;
-      }
-
-      header img.logo {
-        height: 25px;
-      }
-
-      .hero {
-        padding: 15px;
-      }
-
-      .hero p {
-        font-size: 0.9rem;
-      }
-
-      .hero .btn {
-        padding: 8px 15px;
-        font-size: 0.8rem;
-      }
-
-      .soft-skill {
-        padding: 6px 12px;
-        font-size: 0.8rem;
-      }
-
-      .skill-box {
-        min-width: 100px;
-        max-width: 120px;
-        min-height: 150px;
-      }
-
-      .skill-box img {
-        max-width: 50px;
-      }
-
-      .skill-box span {
-        font-size: 0.8rem;
-      }
-
-      .project-card {
-        width: 95%;
-        padding: 15px;
-      }
-
-      .project-slide img {
-        max-width: 100%;
-      }
-
-      .arrow {
-        font-size: 1.5rem;
-        padding: 10px;
-      }
-
-      .carousel-dots .dot {
-        width: 8px;
-        height: 8px;
-      }
-
-      .carousel-dots .dot.active {
-        width: 20px;
-      }
-
-      .contact-title {
-        font-size: 2rem;
-      }
-
-      .contact-subtitle {
-        font-size: 0.9rem;
-      }
-
-      .message-box {
-        max-width: 95%;
-      }
-
-      #messageForm input,
-      #messageForm textarea,
-      #messageForm input[type="file"] {
-        font-size: 0.9rem;
-        padding: 10px;
-      }
-    }
   </style>
 </head>
 <body>
-  <section class="hero" id="home">
-    <img src="Assets/1.png" alt="Profile" class="hero-img" loading="lazy">
-    <p>Your Data, My Analysis — delivered Beyond Expectations</p>
-    <a href="#contact" class="btn">Contact</a>
-  </section>
+
+<section class="hero" id="home">
+  <img src="Assets/1.png" alt="Profile" class="hero-img">
+  <p>Your Data, My Analysis — delivered Beyond Expectations</p>
+  <a href="#contact" class="btn">Contact</a>
+</section>
 
   <!-- Navbar -->
   <header id="navbar">
-    <img src="Assets/logo2.png" alt="Logo" class="logo">
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <nav id="navMenu">
+    <img src="Assets\logo2.png" alt="Logo" class="logo">
+    <nav>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#why-malak">Why Malak</a>
+      <a href="#contact">Why Malak</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -730,137 +674,159 @@
   </section>
 
   <!-- Skills -->
-  <section id="skills">
-    <div class="skills-header">
-      <h1>What I Bring</h1>
-      <p>Strengths and tools that ensure collaboration, clarity, and results.</p>
+<section id="skills">
+  <div class="skills-header">
+    <h1>What I Bring</h1>
+    <p>Strengths and tools that ensure collaboration, clarity, and results.</p>
+  </div>
+
+  <!-- Hard Skills (logos) -->
+  <div class="skills-block" id="skills1">
+    <div class="skills-boxes">
+      <div class="skill-box"><img src="Assets/excel.svg"><span>Excel</span></div>
+      <div class="skill-box"><img src="Assets/sql.svg"><span>SQL</span></div>
+      <div class="skill-box"><img src="Assets/python.svg"><span>Python</span></div>
+      <div class="skill-box"><img src="Assets/powerbi.svg"><span>Power BI</span></div>
+      <div class="skill-box"><img src="Assets/tableau.svg"><span>Tableau</span></div>
+    </div>
+  </div>
+
+  <!-- Soft Skills (glowing bubbles) -->
+<!-- Soft Skills (glowing bubbles) -->
+<div class="skills-block" id="skills2">
+  <div class="soft-skills">
+    <!-- Row 1 -->
+    <div class="soft-skills-row">
+      <span class="soft-skill">Problem-solving</span>
+      <span class="soft-skill">Detail-oriented</span>
+      <span class="soft-skill">Communication</span>
+    </div>
+    <!-- Row 2 -->
+    <div class="soft-skills-row">
+      <span class="soft-skill">Teamwork</span>
+      <span class="soft-skill">Adaptability</span>
+      <span class="soft-skill">Time management</span>
+    </div>
+  </div>
+</div>
+
+
+</section>
+<!-- Projects -->
+<section id="projects">
+  <h1 style="margin-bottom: 40px;">Projects</h1>
+
+  <div class="carousel">
+    <div class="arrow left-arrow" onclick="prevSlide()">&#10094;</div>
+
+    <div class="carousel-track-wrapper">
+      <div class="carousel-track">
+ <div class="project-slide">
+  <div class="project-card">
+    <img src="Assets/1.png" alt="Project 1">
+    <p>Project description</p>
+  </div>
+</div>
+
+<div class="project-slide">
+  <div class="project-card">
+    <img src="Assets/1.png" alt="Project 1">
+    <p>Project description</p>
+  </div>
+</div>
+
+ <div class="project-slide">
+  <div class="project-card">
+    <img src="Assets/1.png" alt="Project 1">
+    <p>Project description</p>
+  </div>
+</div>
+
+      </div>
     </div>
 
-    <!-- Hard Skills (logos) -->
-    <div class="skills-block" id="skills1">
-      <div class="skills-boxes">
-        <div class="skill-box"><img src="https://github.com/malaktawfik/Malak-Tawfik/blob/main/Assets/Excel.svg" loading="lazy"><span>Excel</span></div>
-        <div class="skill-box"><img src="Assets/sql.svg" loading="lazy"><span>SQL</span></div>
-        <div class="skill-box"><img src="Assets/python.svg" loading="lazy"><span>Python</span></div>
-        <div class="skill-box"><img src="Assets/powerbi.svg" loading="lazy"><span>Power BI</span></div>
-        <div class="skill-box"><img src="Assets/tableau.svg" loading="lazy"><span>Tableau</span></div>
-      </div>
-    </div>
+    <div class="arrow right-arrow" onclick="nextSlide()">&#10095;</div>
 
-    <!-- Soft Skills -->
-    <div class="skills-block" id="skills2">
-      <div class="soft-skills">
-        <div class="soft-skills-row">
-          <span class="soft-skill">Problem-solving</span>
-          <span class="soft-skill">Detail-oriented</span>
-          <span class="soft-skill">Communication</span>
-        </div>
-        <div class="soft-skills-row">
-          <span class="soft-skill">Teamwork</span>
-          <span class="soft-skill">Adaptability</span>
-          <span class="soft-skill">Time management</span>
-        </div>
-      </div>
+    <div class="carousel-dots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h1 style="margin-bottom: 40px;">Projects</h1>
-    <div class="carousel">
-      <div class="arrow left-arrow" onclick="prevSlide()" aria-label="Previous slide">&#10094;</div>
-      <div class="carousel-track-wrapper">
-        <div class="carousel-track">
-          <div class="project-slide">
-            <div class="project-card">
-              <img src="Assets/1.png" alt="Project 1" loading="lazy">
-              <p>Project description</p>
-            </div>
-          </div>
-          <div class="project-slide">
-            <div class="project-card">
-              <img src="Assets/1.png" alt="Project 2" loading="lazy">
-              <p>Project description</p>
-            </div>
-          </div>
-          <div class="project-slide">
-            <div class="project-card">
-              <img src="Assets/1.png" alt="Project 3" loading="lazy">
-              <p>Project description</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="arrow right-arrow" onclick="nextSlide()" aria-label="Next slide">&#10095;</div>
-      <div class="carousel-dots">
-        <span class="dot active" onclick="goToSlide(0)"></span>
-        <span class="dot" onclick="goToSlide(1)"></span>
-        <span class="dot" onclick="goToSlide(2)"></span>
-      </div>
-    </div>
-  </section>
 
-  <!-- Why Malak Section -->
-  <section id="why-malak">
-    <div class="why-block">
-      <div class="why-text">
-        <h2>Strategy powered by data.</h2>
-        <p>Analysis isn’t the end — it’s the path to real business impact.</p>
-      </div>
-      <div class="why-image">
-        <img src="Assets/10.png" alt="Data strategy image" loading="lazy">
-      </div>
+<!-- Why Malak Section -->
+<section id="why-malak">
+  <!-- Block 1 -->
+  <div class="why-block">
+    <div class="why-text">
+      <h2>Strategy powered by data.</h2>
+      <p>Analysis isn’t the end — it’s the path to real business impact.</p>
     </div>
-    <div class="why-block reverse">
-      <div class="why-text">
-        <h2>Every client is my top priority.</h2>
-        <p>I deliver projects with accuracy and reliability, always respecting deadlines.</p>
-      </div>
-      <div class="why-image">
-        <img src="Assets/11.png" alt="Client priority image" loading="lazy">
-      </div>
+    <div class="why-image">
+      <img src="Assets/10.png" alt="Data strategy image">
     </div>
-    <div class="why-block">
-      <div class="why-text">
-        <h2>Collaboration made easy.</h2>
-        <p>Clear communication and adaptability ensure smooth teamwork from start to finish.</p>
-      </div>
-      <div class="why-image">
-        <img src="Assets/12.png" alt="Collaboration image" loading="lazy">
-      </div>
+  </div>
+
+  <!-- Block 2 -->
+  <div class="why-block reverse">
+    <div class="why-text">
+      <h2>Every client is my top priority.</h2>
+      <p>I deliver projects with accuracy and reliability, always respecting deadlines.</p>
     </div>
-  </section>
+    <div class="why-image">
+      <img src="Assets/11.png" alt="Client priority image">
+    </div>
+  </div>
+
+  <!-- Block 3 -->
+  <div class="why-block">
+    <div class="why-text">
+      <h2>Collaboration made easy.</h2>
+      <p>Clear communication and adaptability ensure smooth teamwork from start to finish.</p>
+    </div>
+    <div class="why-image">
+      <img src="Assets/12.png" alt="Collaboration image">
+    </div>
+  </div>
+</section>
+
 
   <!-- Contact -->
-  <section id="contact">
-    <div class="contact-content">
-      <h1 class="contact-title">Get in Touch!</h1>
-      <p class="contact-subtitle">Your next big decision deserves insights that matter. What are you waiting for? Get in touch now!</p>
-      <div class="contact-details">
-        <p><span class="icon">✉</span> Email: malaktawfikbusiness.fl@gmail.com</p>
-        <p><span class="icon">🌐</span> LinkedIn: linkedin.com/in/malak-tawfik</p>
-      </div>
-      <button class="message-btn">Send a Message</button>
-      <div class="message-box" id="messageBox">
-        <form id="messageForm">
-          <input type="email" placeholder="Your email (required)" name="email" required>
-          <textarea placeholder="Type your message here..." rows="5" required></textarea>
-          <input type="file" id="attachment" name="attachment" multiple>
-          <button type="submit">Send</button>
-          <button type="button" class="close-btn">Close</button>
-        </form>
-        <div class="confirmation" id="confirmation">Thank you! I will get back to you soon.</div>
-      </div>
-      <div class="copyright">Copyright © 2025 Malak Tawfik. All rights reserved.</div>
+<!-- Contact -->
+<section id="contact">
+  <div class="contact-content">
+    <h1 class="contact-title">Get in Touch!</h1>
+    <p class="contact-subtitle">Your next big decision deserves insights that matter. What are you waiting for? Get in touch now!</p>
+    <div class="contact-details">
+      <p><span class="icon">✉</span> Email: malaktawfikbusiness.fl@gmail.com</p>
+      <p><span class="icon">🌐</span> LinkedIn: linkedin.com/in/malak-tawfik</p>
     </div>
-  </section>
-
+    <button class="message-btn">Send a Message</button>
+    <div class="message-box" id="messageBox">
+      <form id="messageForm">
+        <input type="email" placeholder="Your email (required)" name="email" required>
+        <textarea placeholder="Type your message here..." rows="5" required></textarea>
+        <input type="file" id="attachment" name="attachment" multiple>
+        <button type="submit">Send</button>
+        <button type="button" class="close-btn">Close</button>
+      </form>
+      <div class="confirmation" id="confirmation">Thank you! I will get back to you soon.</div>
+    </div>
+    <div class="copyright">Copyright © 2025 Malak Tawfik. All rights reserved.</div>
+  </div>
+</section>
   <script>
-    // Navbar toggle
-    function toggleMenu() {
-      const navMenu = document.getElementById('navMenu');
-      navMenu.classList.toggle('show');
-    }
+    // Navbar show on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > window.innerHeight - 50) {
+        navbar.classList.add('show');
+      } else {
+        navbar.classList.remove('show');
+      }
+    });
 
     // Active nav link
     const sections = document.querySelectorAll('section');
@@ -868,9 +834,8 @@
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        if (pageYOffset >= sectionTop - 150 && pageYOffset < sectionTop + sectionHeight - 150) {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
           current = section.getAttribute('id');
         }
       });
@@ -885,12 +850,15 @@
     // About fade logic
     const blocks = document.querySelectorAll(".story-block");
     window.addEventListener("scroll", () => {
-      blocks.forEach(block => {
-        const rect = block.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
-          block.classList.add("visible");
-        } else {
-          block.classList.remove("visible");
+      const aboutTop = document.getElementById("about").offsetTop;
+      const scrollY = window.scrollY - aboutTop; 
+      const sectionHeight = window.innerHeight; 
+
+      let index = Math.floor(scrollY / sectionHeight);
+      blocks.forEach((b, i) => {
+        b.classList.remove("visible");
+        if (i === index && scrollY >= 0) {
+          b.classList.add("visible");
         }
       });
     });
@@ -898,132 +866,140 @@
     // Skills fade logic
     const skillBlocks = document.querySelectorAll(".skills-block");
     window.addEventListener("scroll", () => {
-      skillBlocks.forEach(block => {
-        const rect = block.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
+      const skillsTop = document.getElementById("skills").offsetTop;
+      const scrollY = window.scrollY - skillsTop;
+      const sectionHeight = window.innerHeight;
+
+      let index = Math.floor(scrollY / sectionHeight);
+      skillBlocks.forEach((block, i) => {
+        block.classList.remove("visible");
+        if (i === index && scrollY >= 0) {
           block.classList.add("visible");
-        } else {
-          block.classList.remove("visible");
         }
       });
     });
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.project-slide');
+  const track = document.querySelector('.carousel-track');
+  const dots = document.querySelectorAll('.dot');
+  const leftArrow = document.querySelector('.left-arrow');
+  const rightArrow = document.querySelector('.right-arrow');
 
-    // Carousel
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.project-slide');
-    const track = document.querySelector('.carousel-track');
-    const dots = document.querySelectorAll('.dot');
-    const leftArrow = document.querySelector('.left-arrow');
-    const rightArrow = document.querySelector('.right-arrow');
+  function updateSlidePosition() {
+    const offset = -currentSlide * 100;
+    track.style.transform = `translateX(${offset}%)`;
 
-    function updateSlidePosition() {
-      const offset = -currentSlide * 100;
-      track.style.transform = `translateX(${offset}%)`;
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[currentSlide].classList.add('active');
-      leftArrow.classList.toggle('disabled', currentSlide === 0);
-      rightArrow.classList.toggle('disabled', currentSlide === slides.length - 1);
-    }
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentSlide].classList.add('active');
 
-    function goToSlide(index) {
-      currentSlide = index;
+    leftArrow.classList.toggle('disabled', currentSlide === 0);
+    rightArrow.classList.toggle('disabled', currentSlide === slides.length - 1);
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    updateSlidePosition();
+  }
+
+  function nextSlide() {
+    if (currentSlide < slides.length - 1) {
+      currentSlide++;
       updateSlidePosition();
     }
+  }
 
-    function nextSlide() {
+  function prevSlide() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateSlidePosition();
+    }
+  }
+
+  // Auto scroll on section enter
+  let projectsVisible = false;
+  const projectsSection = document.getElementById('projects');
+
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top <= window.innerHeight / 2 && rect.bottom >= 0;
+  }
+
+  let autoScrollInterval;
+
+  function startAutoScroll() {
+    autoScrollInterval = setInterval(() => {
       if (currentSlide < slides.length - 1) {
         currentSlide++;
         updateSlidePosition();
+      } else {
+        clearInterval(autoScrollInterval);
       }
+    }, 8000); // Scroll every 3 seconds
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!projectsVisible && isElementInViewport(projectsSection)) {
+      projectsVisible = true;
+      startAutoScroll();
+    }
+  });
+
+// Message Box Toggle
+const messageBtn = document.querySelector('.message-btn');
+const messageBox = document.getElementById('messageBox');
+const closeBtn = document.querySelector('.close-btn');
+const confirmation = document.getElementById('confirmation');
+const messageForm = document.getElementById('messageForm');
+
+messageBtn.addEventListener('click', () => {
+  messageBox.classList.add('active');
+  confirmation.classList.remove('active');
+});
+
+closeBtn.addEventListener('click', () => {
+  messageBox.classList.remove('active');
+  messageForm.reset();
+  confirmation.classList.remove('active');
+});
+
+messageForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.querySelector('input[type="email"]').value;
+  const message = document.querySelector('textarea').value;
+  const attachmentInput = document.getElementById('attachment');
+  const attachments = attachmentInput.files;
+
+  // Mock API call (replace with real endpoint)
+  try {
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('message', message);
+    for (let file of attachments) {
+      formData.append('attachments', file);
     }
 
-    function prevSlide() {
-      if (currentSlide > 0) {
-        currentSlide--;
-        updateSlidePosition();
-      }
-    }
+    // Simulate sending to your Gmail
+const response = await fetch('https://portfolio-backend-3qrdc4dqn-malaks-projects-94eec807.vercel.app/api/send-email', {
+  method: 'POST',
+  body: formData,
+});
+if (response.ok) {
+  messageForm.reset();
+  confirmation.classList.add('active');
+  setTimeout(() => {
+    messageBox.classList.remove('active');
+    confirmation.classList.remove('active');
+  }, 3000); // Hide after 3 seconds
+} else {
+  const text = await response.text();
+  alert(`Failed to send message. Server says: ${text}`);
+}
+} catch (error) {
+  alert(`An error occurred: ${error.message}`);
+}
+});
 
-    // Auto scroll on section enter
-    let projectsVisible = false;
-    const projectsSection = document.getElementById('projects');
 
-    function isElementInViewport(el) {
-      const rect = el.getBoundingClientRect();
-      return rect.top <= window.innerHeight / 2 && rect.bottom >= 0;
-    }
-
-    let autoScrollInterval;
-    function startAutoScroll() {
-      autoScrollInterval = setInterval(() => {
-        if (currentSlide < slides.length - 1) {
-          currentSlide++;
-          updateSlidePosition();
-        } else {
-          clearInterval(autoScrollInterval);
-        }
-      }, 8000);
-    }
-
-    window.addEventListener('scroll', () => {
-      if (!projectsVisible && isElementInViewport(projectsSection)) {
-        projectsVisible = true;
-        startAutoScroll();
-      }
-    });
-
-    // Message Box Toggle
-    const messageBtn = document.querySelector('.message-btn');
-    const messageBox = document.getElementById('messageBox');
-    const closeBtn = document.querySelector('.close-btn');
-    const confirmation = document.getElementById('confirmation');
-    const messageForm = document.getElementById('messageForm');
-
-    messageBtn.addEventListener('click', () => {
-      messageBox.classList.add('active');
-      confirmation.classList.remove('active');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      messageBox.classList.remove('active');
-      messageForm.reset();
-      confirmation.classList.remove('active');
-    });
-
-    messageForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.querySelector('input[type="email"]').value;
-      const message = document.querySelector('textarea').value;
-      const attachmentInput = document.getElementById('attachment');
-      const attachments = attachmentInput.files;
-
-      try {
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('message', message);
-        for (let file of attachments) {
-          formData.append('attachments', file);
-        }
-
-        const response = await fetch('https://portfolio-backend-3qrdc4dqn-malaks-projects-94eec807.vercel.app/api/send-email', {
-          method: 'POST',
-          body: formData,
-        });
-        if (response.ok) {
-          messageForm.reset();
-          confirmation.classList.add('active');
-          setTimeout(() => {
-            messageBox.classList.remove('active');
-            confirmation.classList.remove('active');
-          }, 3000);
-        } else {
-          const text = await response.text();
-          alert(`Failed to send message. Server says: ${text}`);
-        }
-      } catch (error) {
-        alert(`An error occurred: ${error.message}`);
-      }
-    });
   </script>
 </body>
 </html>
