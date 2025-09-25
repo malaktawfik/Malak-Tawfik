@@ -627,6 +627,83 @@
   display: block;
 }
 
+    /* Mobile / Small Screens */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 20px;
+  }
+
+  nav {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    padding-bottom: 40px;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .hero .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .skills-boxes {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .skill-box {
+    min-width: 120px;
+    max-width: 150px;
+    min-height: 180px;
+  }
+
+  .why-block, .why-block.reverse {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .why-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .why-text p {
+    font-size: 1rem;
+  }
+
+  #projects .project-card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .project-slide img {
+    width: 90%;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  #messageForm input,
+  #messageForm textarea,
+  #messageForm input[type="file"] {
+    font-size: 0.9rem;
+  }
+}
+
   </style>
 </head>
 <body>
